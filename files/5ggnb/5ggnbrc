@@ -1,7 +1,0 @@
-# Customize .bashrc for emulating a 5G gNB OSS
-source  /home/student/.bashrc
-alias 5ggnbup=   'sudo systemctl enable 5g-gnb.service ; sudo systemctl start 5g-gnb.service'
-alias 5ggnbdown= 'sudo systemctl stop 5g-gnb.service ; sudo systemctl disable 5g-gnb.service'
-alias 5ggnblog=  'sudo journalctl -fu 5g-gnb.service'
-alias showgnb=   'batcat /home/student/UERANSIM/config/free5gc-gnb.yaml'
-export PS1="\u@\h:\w_\[\e[35m\][\[\e[m\]\[\e[35m\]5ggnb\[\e[m\]\[\e[35m\]]\[\e[m\]\\$ "
