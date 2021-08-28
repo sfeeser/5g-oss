@@ -1,0 +1,8 @@
+# Include the existing .bashrc
+source  /home/student/.bashrc
+# Aliases
+alias 5gwebuiup='sudo systemctl enable 5g-webui.service ; sudo systemctl start 5g-webui.service'
+alias 5gwebuidown='sudo systemctl stop 5g-webui.service ; sudo systemctl disable 5g-webui.service'
+alias 5gwebuilog='sudo journalctl -fu 5g-webui.service'
+# Exports
+export PS1="\u@\h:\w_\[\e[36m\][\[\e[m\]\[\e[36m\]webcli\[\e[m\]\[\e[36m\]]\[\e[m\]\\$ "
