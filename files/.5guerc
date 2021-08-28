@@ -1,0 +1,7 @@
+# Customize .bashrc for UE EMULATION
+source  /home/student/.bashrc
+alias 5gueup=   'sudo systemctl enable 5g-ue.service ; sudo systemctl start 5g-ue.service'
+alias 5guedown= 'sudo systemctl stop 5g-ue.service ; sudo systemctl disable 5g-ue.service'
+alias 5guelog=  'sudo journalctl -fu 5g-ue.service'
+alias showue=   'batcat /home/student/UERANSIM/config/free5gc-ue.yaml`
+export PS1="\u@\h:\w_\[\e[37m\][\[\e[m\]\[\e[37m\]ue\[\e[m\]\[\e[37m\]]\[\e[m\]\\$ "
