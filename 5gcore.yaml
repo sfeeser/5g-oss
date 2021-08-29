@@ -20,7 +20,7 @@
 
 - name: Install free5gcore dependancies
   apt:
-    state: present
+    state: latest
     name: 
        pkg:
        - mongodb
@@ -34,19 +34,11 @@
        - libyaml-dev
        - bat
        - wget
-       
- 
+
 - name: Start mongodb now
   ansible.service:
     name: mongodb
     state: started
-
-- name: frmongodb is the databse for free5gcore
-  apt:
-    pkg:
-       - mongodb
-       
-    state: present
 
 - name: Run go get command if /path/to/database does not exist (with 'cmd' parameter)
   ansible.command:
