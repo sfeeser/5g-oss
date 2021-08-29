@@ -1,0 +1,69 @@
+- name: Labs count on this directory to be present
+  ansible.file:
+    path: /home/student/mycode
+    state: directory
+    owner: student
+    group: student
+
+- name: Install latest cmake
+  snap:
+    name: cmake
+    classic: yes
+
+- name: add this path to .bashrc: PATH=$PATH:/home/student/go/bin:/usr/local/go/bin
+
+- name: Install GO
+  ansible.unarchive:
+    src: https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+
+- name: Install free5gcore dependancies
+  apt:
+    state: present
+    name: 
+       pkg:
+       - mongodb
+       - git
+       - gcc
+       - g++
+       - autoconf
+       - libtool
+       - pkg-config
+       - libmnl-dev
+       - libyaml-dev
+       - bat
+       - wget
+       
+ 
+- name: Start mongodb now
+  ansible.service:
+    name: mongodb
+    state: started
+
+- name: frmongodb is the databse for free5gcore
+  apt:
+    pkg:
+       - mongodb
+       
+    state: present
+
+- name: Run go get command if /path/to/database does not exist (with 'cmd' parameter)
+  ansible.command:
+    cmd: go get -u github.com/sirupsen/logrus
+    # creates: /sure/wish/I/knew!
+
+wget https://labs.alta3.com/courses/5g/scripts/upf-int-up.sh -O ~/mycode/upf-int-up.sh
+bash ~/mycode/upf-int-up.sh ens3
+wget https://labs.alta3.com/courses/5g/scripts/install-upf-nfv.sh -O ~/mycode/install-upf-nfv.sh
+bash ~/mycode/install-upf-nfv.sh ens3
+git clone --recursive https://github.com/free5gc/free5gc.git
+wget https://labs.alta3.com/courses/5g/scripts/run.sh -O ~/free5gc/run.sh
+cd ~/free5gc && make
+wget https://labs.alta3.com/courses/5g/scripts/gtp5g-install.sh -O ~/mycode/gtp5g-install.sh
+bash ~/mycode/gtp5g-install.sh
+cd ~/free5gc && make upf
+wget https://labs.alta3.com/courses/5g/scripts/upfcfg.yaml -O ~/free5gc/NFs/upf/build/config/upfcfg.yaml
+wget https://labs.alta3.com/courses/5g/scripts/nodejs-yarn-install.sh -O ~/mycode/nodejs-yarn-install.sh
+yes | bash ~/mycode/nodejs-yarn-install.sh
+cd ~/free5gc && make webconsole
