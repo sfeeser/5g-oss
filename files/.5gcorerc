@@ -1,0 +1,19 @@
+# Include the existing .bashrc
+source  /home/student/.bashrc
+# 5g Core aliases
+alias 5gcup='sudo systemctl enable 5g-core.service ; sudo systemctl start 5g-core.service'
+alias 5gcdown='sudo systemctl stop 5g-core.service ; sudo systemctl disable 5g-core.service'
+alias 5gclog='sudo journalctl -fu 5g-core.service'
+alias showamf='batcat --color=always /home/student/free5gc/config/amfcfg.yaml | less -R'
+alias showausf='batcat --color=always /home/student/free5gc/config/ausfcfg.yaml | less -R'
+alias shown3iwf='batcat --color=always /home/student/free5gc/config/n3iwfcfg.yaml | less -R'
+alias shownrf='batcat --color=always /home/student/free5gc/config/nrfcfg.yaml | less -R'
+alias shownssf='batcat --color=always /home/student/free5gc/config/nssfcfg.yaml | less -R'
+alias showpcf='batcat --color=always /home/student/free5gc/config/pcfcfg.yaml | less -R'
+alias showsmf='batcat --color=always /home/student/free5gc/config/smfcfg.yaml | less -R'
+alias showudm='batcat --color=always /home/student/free5gc/config/udmcfg.yaml | less -R'
+alias showudr='batcat --color=always /home/student/free5gc/config/udrcfg.yaml | less -R'
+alias showueroute='batcat --color=always /home/student/free5gc/config/uerouting.yaml | less -R'
+alias showwebui='batcat --color=always /home/student/free5gc/config/webuicfg.yaml | less -R'
+# Exports
+export PS1="\u@\h:\w_\[\e[33m\][\[\e[m\]\[\e[33m\]5gcore\[\e[m\]\[\e[33m\]]\[\e[m\]\\$ "
