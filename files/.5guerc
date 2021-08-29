@@ -1,0 +1,9 @@
+# Include the existing .bashrc
+source  /home/student/.bashrc
+# Aliases
+alias 5gueup='ssh bravo "sudo systemctl enable 5g-ue.service ; sudo systemctl start 5g-ue.service"'
+alias 5guedown='ssh bravo "sudo systemctl stop 5g-ue.service ; sudo systemctl disable 5g-ue.service"'
+alias 5guelog='ssh bravo "sudo journalctl -fu 5g-ue.service"'
+alias showue='ssh bravo "batcat --color=always /home/student/UERANSIM/config/free5gc-ue.yaml | less -R"'
+# Exports
+export PS1="\u@\h:\w_\[\e[37m\][\[\e[m\]\[\e[37m\]ue\[\e[m\]\[\e[37m\]]\[\e[m\]\\$ "
