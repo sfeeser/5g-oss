@@ -1,0 +1,18 @@
+[Unit]
+Description=Alta3 5G UE tmux service
+After=network.target
+
+[Service]
+User=student
+Group=student
+
+ExecStart=/opt/ttyd/ttyd \
+  --interface 0.0.0.0 \
+  --port 2229 \
+  --client-option 'disableLeaveAlert=true' \
+  --client-option 'titleFixed="5G UE"' \
+  --client-option 'theme={"background":"#0f0f0f"}' \
+    /usr/bin/tmux -L 5gue -f /home/student/.5gue.tmux.conf new -A -s 5gue
+
+[Install]
+WantedBy=multi-user.target
