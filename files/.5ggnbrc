@@ -1,0 +1,9 @@
+# Include the existing .bashrc
+source  /home/student/.bashrc
+# Aliases
+alias 5ggnbup='ssh bravo "sudo systemctl enable 5g-gnb.service ; sudo systemctl start 5g-gnb.service"'
+alias 5ggnbdown='ssh bravo "sudo systemctl stop 5g-gnb.service ; sudo systemctl disable 5g-gnb.service"'
+alias 5ggnblog='ssh bravo "sudo journalctl -fu 5g-gnb.service"'
+alias showgnb='ssh bravo "batcat --color=always /home/student/UERANSIM/config/free5gc-gnb.yaml" | less -R'
+# Exports
+export PS1="\u@\h:\w_\[\e[35m\][\[\e[m\]\[\e[35m\]5ggnb\[\e[m\]\[\e[35m\]]\[\e[m\]\\$ "
